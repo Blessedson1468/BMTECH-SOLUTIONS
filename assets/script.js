@@ -141,3 +141,18 @@ function toggleChat(){
         chat.style.display = "flex";
     }
 }
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+function toggleMenu() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+}
+
+hamburger.addEventListener('click', toggleMenu);
+
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(n => n.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+}));

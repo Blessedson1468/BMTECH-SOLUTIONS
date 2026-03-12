@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 /* ---------------- ROOT VARIABLES ---------------- */
+*,
+*::before,
+*::after{
+box-sizing:border-box;
+}
 :root{
     --primary:#38bdf8;
     --primary-glow:rgba(56,189,248,0.3);
@@ -45,7 +50,7 @@ html{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:0 10%;
+    padding:0 5%;
     height:80px;
     position:fixed;
     width:100%;
@@ -67,9 +72,9 @@ html{
 }
 
 .nav-links a{
-    text-decoration:none;
+    text-decoration:white;
     color:var(--text-main);
-    font-weight:600;
+    font-weight:400;
     font-size:.95rem;
     transition:var(--transition);
 }
@@ -207,6 +212,7 @@ html{
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:2rem;
     margin-top:40px;
+
 }
 
 .card{
@@ -217,6 +223,7 @@ html{
     border-radius:20px;
     border:1px solid rgba(255,255,255,.05);
     transition:var(--transition);
+    
 }
 
 .card:hover{
@@ -829,4 +836,68 @@ background: #2563eb;
 
 .call{
 background: #f59e0b;
+}
+img{
+max-width:100%;
+height:auto;
+display:block;
+}
+/* --- HAMBURGER MENU STYLES --- */
+
+/* Hide hamburger by default (Desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+/* Mobile View (Phone/Small Devices) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Show the three lines */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 80px; /* Height of your navbar */
+        right: -100%; /* Hide off-screen by default */
+        flex-direction: column;
+        background: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(20px);
+        width: 100%;
+        text-align: center;
+        padding: 40px 0;
+        transition: 0.5s ease;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* When menu is active, slide it in */
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+    
+    /* Optional: Animate hamburger to an 'X' when clicked */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
