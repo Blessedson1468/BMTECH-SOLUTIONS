@@ -901,3 +901,350 @@ display:block;
         transform: translateY(-8px) rotate(-45deg);
     }
 }
+/* ---------------- BLOG SECTION ---------------- */
+.blog-section {
+    padding: 80px 20px;
+    background: #0f172a;
+    color: #fff;
+    text-align: center;
+}
+
+.blog-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.blog-section p {
+    color: #cbd5f5;
+    margin-bottom: 40px;
+}
+
+/* ---------------- BLOG GRID ---------------- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* ---------------- BLOG CARD ---------------- */
+.blog-card {
+    background: #111827;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow effect */
+.blog-card::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, var(--primary-glow), transparent);
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+.blog-card:hover::before {
+    opacity: 1;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Blog Title */
+.blog-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Blog Text */
+.blog-card p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+/* Read More Button */
+.blog-card .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--primary);
+    color: #000;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.blog-card .btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+}
+
+/* ---------------- CONTAINER ---------------- */
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ---------------- FOOTER ---------------- */
+.site-footer {
+    background: #020617;
+    padding: 40px 20px;
+    color: #cbd5f5;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.footer-logo span {
+    color: var(--primary);
+}
+
+.footer-line {
+    height: 1px;
+    background: #1e293b;
+    margin: 20px 0;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+}
+
+.social-icons a {
+    margin-left: 10px;
+    color: #cbd5f5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary);
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+    .blog-section h1 {
+        font-size: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+/* CATEGORY TAG */
+.category {
+    display: inline-block;
+    background: rgba(56,189,248,0.15);
+    color: var(--primary);
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.blog-categories {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.blog-categories button {
+    padding: 8px 15px;
+    border: none;
+    background: #1e293b;
+    color: #cbd5f5;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.blog-categories button:hover {
+    background: var(--primary);
+    color: #000;
+}
+/* --- MODERN BLOG POST STYLING --- */
+
+/* Limit reading width for better UX */
+.small-container {
+    max-width: 800px; /* Scientific "golden" width for reading */
+    margin: 0 auto;
+}
+
+.post-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 80px;
+}
+
+.post-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    background: linear-gradient(to right, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.post-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+.separator {
+    margin: 0 10px;
+    color: var(--primary);
+}
+
+.image-wrapper {
+    margin: 40px 0;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    /* This creates the 'Outer Glow' */
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.1), 
+                0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Add a shimmering reflection effect over the image */
+.image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(255, 255, 255, 0.05), 
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.8s;
+}
+
+.image-wrapper:hover::after {
+    left: 150%;
+}
+
+.blog-image {
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover .blog-image {
+    transform: scale(1.05);
+}
+.image-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-top: 3px solid var(--primary);
+    border-right: 3px solid var(--primary);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Add a second one for the bottom-left */
+.post-body .image-wrapper {
+    position: relative;
+}
+
+/* Optional: Add a subtle 'Scanner Line' animation */
+@keyframes scan {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+.image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+    opacity: 0.2;
+    animation: scan 4s linear infinite;
+    z-index: 1;
+}
+.blog-image {
+    width: 100%;
+    display: block;
+    /* Slight blue tint to make various images feel like they belong to the same brand */
+    filter: brightness(0.9) contrast(1.1) saturate(1.2);
+    transition: var(--transition);
+}
+
+.image-wrapper:hover .blog-image {
+    filter: brightness(1.1);
+    transform: scale(1.03);
+}
+
+.post-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+}
+
+.lead {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+}
+
+.post-body h2 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.highlight-box {
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid var(--primary-glow);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 30px 0;
+    font-style: italic;
+}
+
+.post-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
