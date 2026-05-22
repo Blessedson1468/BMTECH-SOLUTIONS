@@ -1248,3 +1248,202 @@ display:block;
     border-top: 1px solid rgba(255,255,255,0.05);
     text-align: center;
 }
+/* ============================================
+   MAGICAL MUSIC ORB — Tech Holographic Style
+   ============================================ */
+
+#musicToggle {
+  position: fixed;
+  right: 24px;
+  bottom: 500px;
+  z-index: 9999;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  /* Base orb style */
+  background: radial-gradient(circle at 35% 35%, #1a2a4a, #020617);
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  box-shadow:
+    0 0 0 0 rgba(56, 189, 248, 0),
+    0 0 20px rgba(56, 189, 248, 0.2),
+    inset 0 0 20px rgba(56, 189, 248, 0.05);
+
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Outer pulse ring — idle */
+#musicToggle::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 189, 248, 0.2);
+  animation: orb-ring-idle 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Second outer ring */
+#musicToggle::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1px solid rgba(56, 189, 248, 0.08);
+  animation: orb-ring-idle 3s ease-in-out infinite 0.8s;
+  pointer-events: none;
+}
+
+@keyframes orb-ring-idle {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+/* EQ bars inside the orb */
+.eq-bar {
+  width: 3px;
+  height: 6px;
+  background: rgba(56, 189, 248, 0.5);
+  border-radius: 2px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.eq-bars-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+
+/* Static heights when paused */
+.eq-bar:nth-child(1) { height: 8px; }
+.eq-bar:nth-child(2) { height: 14px; }
+.eq-bar:nth-child(3) { height: 10px; }
+.eq-bar:nth-child(4) { height: 18px; }
+.eq-bar:nth-child(5) { height: 8px; }
+
+/* Animated bars when playing */
+.eq-bar.active {
+  background: var(--primary);
+  box-shadow: 0 0 6px var(--primary);
+}
+
+.eq-bar.active:nth-child(1) { animation: eq1 0.6s ease-in-out infinite alternate; }
+.eq-bar.active:nth-child(2) { animation: eq2 0.5s ease-in-out infinite alternate; }
+.eq-bar.active:nth-child(3) { animation: eq3 0.7s ease-in-out infinite alternate; }
+.eq-bar.active:nth-child(4) { animation: eq4 0.4s ease-in-out infinite alternate; }
+.eq-bar.active:nth-child(5) { animation: eq5 0.65s ease-in-out infinite alternate; }
+
+@keyframes eq1 { from { height: 4px; } to { height: 18px; } }
+@keyframes eq2 { from { height: 8px; } to { height: 22px; } }
+@keyframes eq3 { from { height: 6px; } to { height: 14px; } }
+@keyframes eq4 { from { height: 12px; } to { height: 26px; } }
+@keyframes eq5 { from { height: 4px; } to { height: 16px; } }
+
+/* Vibe label */
+.music-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(56, 189, 248, 0.6);
+  font-weight: 700;
+  margin-top: 2px;
+  font-family: monospace;
+}
+
+/* Playing state — orb lights up */
+#musicToggle.playing {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 4px rgba(56, 189, 248, 0.12),
+    0 0 30px rgba(56, 189, 248, 0.4),
+    0 0 60px rgba(56, 189, 248, 0.15),
+    inset 0 0 30px rgba(56, 189, 248, 0.1);
+  background: radial-gradient(circle at 35% 35%, #0f2744, #020617);
+}
+
+#musicToggle.playing::before {
+  border-color: rgba(56, 189, 248, 0.5);
+  animation: orb-ring-active 1.5s ease-in-out infinite;
+}
+
+#musicToggle.playing::after {
+  border-color: rgba(56, 189, 248, 0.25);
+  animation: orb-ring-active 1.5s ease-in-out infinite 0.5s;
+}
+
+@keyframes orb-ring-active {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+#musicToggle.playing .music-label {
+  color: var(--primary);
+}
+
+#musicToggle:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+  #musicToggle {
+    bottom: 100px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+  }
+}
+.video-wrapper {
+    position: relative;
+    cursor: pointer;
+    max-width: 100%;
+    border-radius: 12px;
+    overflow: hidden; /* keeps video inside the rounded corners */
+    background: #000; /* avoids flash of white before video loads */
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    transition: 0.3s ease;
+    z-index: 2;
+    pointer-events: none; /* let clicks pass through to the wrapper */
+}
+
+.video-wrapper:hover .play-overlay:not(.hidden) {
+    background: rgba(56, 189, 248, 0.85); /* matches your brand blue */
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-overlay.hidden {
+    display: none;
+}
+.chat-options {
+    display: none; /* */
+    flex-direction: column; /* */
+    margin-bottom: 10px; /* */
+}
+
+/* ADD THIS RIGHT HERE TO TURN IT ON */
+.chat-options.active {
+    display: flex !important;
+}
