@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ... your existing music player, video player, and navbar code below ...
 });
 
+<<<<<<< HEAD
 
 // ================================================================
 // FIXED BACKGROUND IMAGE + TECH PARTICLE OVERLAY
@@ -196,6 +197,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+=======
+>>>>>>> 64ebacb06241a1deada608e6a2dc0dc0b0ea7f1e
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("BMTECH SOLUTIONS activated 🚀");
@@ -215,12 +218,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================
     const links = document.querySelectorAll(".nav-links a");
     const currentPath = window.location.pathname;
+<<<<<<< HEAD
 
     // 2a. Multi-page highlight (for about.html, services.html, etc.)
     links.forEach(link => {
         const href = link.getAttribute("href");
         if (!href) return;
         if (href.startsWith("#")) return; // handled by 2b below
+=======
+    links.forEach(link => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+>>>>>>> 64ebacb06241a1deada608e6a2dc0dc0b0ea7f1e
         if (currentPath.includes(href) && href !== "index.html") {
             link.classList.add("active-link");
         } else if ((currentPath.endsWith("/") || currentPath.includes("index.html")) && href === "index.html") {
@@ -228,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+<<<<<<< HEAD
     // 2b. Single-page anchor highlight (for index.html sections)
     // As the user scrolls through #home, #about, #services, etc.,
     // highlight the matching nav link automatically.
@@ -255,6 +265,8 @@ document.addEventListener("DOMContentLoaded", function () {
         sections.forEach(sec => sectionObserver.observe(sec));
     }
 
+=======
+>>>>>>> 64ebacb06241a1deada608e6a2dc0dc0b0ea7f1e
     // =========================
     // 3. Fade-in Animation
     // =========================
