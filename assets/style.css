@@ -106,9 +106,27 @@ body {
   color: var(--primary);
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; }
-.logo span { color: var(--primary); }
-.logo a { text-decoration: none; color: #fff; }
+.logo { display: flex; align-items: center; }
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+.logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+.logo-accent { color: var(--primary); }
 
 /* ---- HERO ---- */
 .hero-section {
@@ -1518,3 +1536,4 @@ section[id] {
 @media (max-width: 768px) {
   .bg-fixed { background-attachment: scroll; } /* iOS fix: fixed bg can glitch on mobile Safari */
 }
+/* Logo image sizing handled by .logo-img above */
